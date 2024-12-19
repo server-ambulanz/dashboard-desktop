@@ -1,0 +1,46 @@
+{
+  "name": "server-ambulanz-desktop",
+  "version": "1.0.0",
+  "description": "Server-Ambulanz Dashboard Desktop App",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --config electron-builder.yml",
+    "build:mac": "electron-builder --mac --config electron-builder.yml",
+    "build:win": "electron-builder --win --config electron-builder.yml",
+    "build:linux": "electron-builder --linux --config electron-builder.yml",
+    "dist": "electron-builder -mwl --config electron-builder.yml",
+    "postinstall": "electron-builder install-app-deps && chmod +x install-deps.sh && ./install-deps.sh"
+  },
+  "build": {
+    "appId": "com.serverambulanz.dashboard",
+    "productName": "Server-Ambulanz Dashboard",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "linux": {
+      "target": ["AppImage", "deb"],
+      "category": "Utility",
+      "depends": [
+        "libnss3",
+        "libatk1.0-0",
+        "libatk-bridge2.0-0",
+        "libgdk-pixbuf2.0-0",
+        "libgtk-3-0",
+        "libgbm1"
+      ]
+    }
+  },
+  "dependencies": {
+    "electron-log": "^5.0.1",
+    "electron-store": "^8.1.0",
+    "electron-updater": "^6.1.7",
+    "node-fetch": "^3.3.2",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "electron": "^28.1.0",
+    "electron-builder": "^24.9.1"
+  }
+}
